@@ -14,5 +14,7 @@ services:
       - DAY_CRON=${DAY_CRON}
       - MONTH_CRON=${MONTH_CRON}
       - YEAR_CRON=${YEAR_CRON}
+      - LOCALE=${LOCALE}
+      - TIMEZONE=${TIMEZONE}
     ports:
       - ${PORT}:${PORT}

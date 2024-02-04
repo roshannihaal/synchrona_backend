@@ -8,6 +8,8 @@ export const ConfigSchema = z.object({
   DAY_CRON: z.string().trim(),
   MONTH_CRON: z.string().trim(),
   YEAR_CRON: z.string().trim(),
+  LOCALE: z.string().trim(),
+  TIMEZONE: z.string().trim(),
 })
 
 export type ConfigSchema = z.input<typeof ConfigSchema>

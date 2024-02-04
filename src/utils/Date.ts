@@ -1,8 +1,12 @@
 import { format } from 'date-fns'
+import { config } from '../config'
+
+const locale = config.LOCALE
+const timezone = config.TIMEZONE
 
 export const getCurrDate = () => {
-  const currDate = new Date().toLocaleString('en-US', {
-    timeZone: 'Asia/Kolkata',
+  const currDate = new Date().toLocaleString(locale, {
+    timeZone: timezone,
     hour12: false,
   })
   return currDate
