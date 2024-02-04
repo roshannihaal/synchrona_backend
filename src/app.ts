@@ -1,6 +1,7 @@
 import express from 'express'
 import http from 'http'
 import { Server } from 'socket.io'
+import { cronMinute, cronHour, cronDay, cronMonth, cronYear } from './cron'
 
 const app = express()
 const server = http.createServer(app)
@@ -12,5 +13,11 @@ app.get('/', (req, res) => {
     .status(resStatusCode)
     .send({ statusCode: resStatusCode, message: 'Hello World!' })
 })
+
+cronMinute.start()
+cronHour.start()
+cronDay.start()
+cronMonth.start()
+cronYear.start()
 
 export { io, server }
