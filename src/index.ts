@@ -8,17 +8,17 @@ server.listen(port, () => {
 })
 
 io.of('/hour').on('connection', (socket) => {
-  io.of('/hour').emit('welcome', 'connected to hour clock')
+  socket.emit('init', 'Connected to Hour Clock')
 })
 
 io.of('/day').on('connection', (socket) => {
-  io.of('/day').emit('welcome', 'connected to day clock')
+  socket.emit('init', 'Connected to Day Clock')
 })
 
 io.of('/month').on('connection', (socket) => {
-  io.of('/month').emit('welcome', 'connected to month clock')
+  socket.emit('init', 'Connected to Month Clock')
 })
 
 io.of('/year').on('connection', (socket) => {
-  io.of('/year').emit('welcome', 'connected to year clock')
+  socket.emit('init', 'Connected to Year Clock')
 })
