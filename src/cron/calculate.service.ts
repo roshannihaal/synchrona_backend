@@ -23,7 +23,7 @@ export const calculateMinute = () => {
     month,
     year,
   }
-  console.log('🚀 ~ minute ~ emit:', emit)
+  console.log('🚀 ~ calculateMinute ~ emit:', emit)
 }
 
 export const calculateHour = () => {
@@ -47,7 +47,7 @@ export const calculateHour = () => {
     month,
     year,
   }
-  console.log('🚀 ~ hour ~ emit:', emit)
+  console.log('🚀 ~ calculateHour ~ emit:', emit)
 }
 
 export const calculateDay = () => {
@@ -74,7 +74,7 @@ export const calculateDay = () => {
     month,
     year,
   }
-  console.log('🚀 ~ day ~ emit:', emit)
+  console.log('🚀 ~ calculateDay ~ emit:', emit)
 }
 
 export const calculateMonth = () => {
@@ -106,7 +106,7 @@ export const calculateMonth = () => {
     month,
     year,
   }
-  console.log('🚀 ~ day ~ emit:', emit)
+  console.log('🚀 ~ calculateMonth ~ emit:', emit)
 }
 
 export const calculateYear = () => {
@@ -146,5 +146,5 @@ export const calculateYear = () => {
     month,
     year,
   }
-  console.log('🚀 ~ day ~ emit:', emit)
+  console.log('🚀 ~ calculateYear ~ emit:', emit)
 }
