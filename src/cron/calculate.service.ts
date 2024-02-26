@@ -18,12 +18,6 @@ export const calculateMinute = () => {
   const emit = {
     date: currDate,
     percentage,
-    second,
-    minute,
-    hour,
-    day,
-    month,
-    year,
   }
   console.log('🚀 ~ calculateMinute ~ emit:', emit)
 }
@@ -42,12 +36,6 @@ export const calculateHour = () => {
   const result = {
     date: currDate,
     percentage,
-    second,
-    minute,
-    hour,
-    day,
-    month,
-    year,
   }
   console.log('🚀 ~ calculateHour ~ result:', result)
   storeAndEmit('hour', result)
@@ -70,12 +58,6 @@ export const calculateDay = () => {
   const result = {
     date: currDate,
     percentage,
-    second,
-    minute,
-    hour,
-    day,
-    month,
-    year,
   }
   console.log('🚀 ~ calculateDay ~ result:', result)
   storeAndEmit('day', result)
@@ -103,12 +85,6 @@ export const calculateMonth = () => {
   const result = {
     date: currDate,
     percentage,
-    second,
-    minute,
-    hour,
-    day,
-    month,
-    year,
   }
   console.log('🚀 ~ calculateMonth ~ result:', result)
   storeAndEmit('month', result)
@@ -144,12 +120,6 @@ export const calculateYear = () => {
   const result = {
     date: currDate,
     percentage,
-    second,
-    minute,
-    hour,
-    day,
-    month,
-    year,
   }
   console.log('🚀 ~ calculateYear ~ result:', result)
   storeAndEmit('year', result)
