@@ -1,3 +1,4 @@
+import { io } from '../app'
 import { timeUnits } from '../constants'
 import {
   getCurrDate,
@@ -6,6 +7,7 @@ import {
   getDaysInAMonth,
   getDaysInAYear,
 } from '../utils'
+import { storeAndEmit } from './storeAndEmit'
 
 export const calculateMinute = () => {
   const currDate = getCurrDate()
@@ -37,7 +39,7 @@ export const calculateHour = () => {
     timeUnits.SECONDS_IN_AN_HOUR,
   )
 
-  const emit = {
+  const result = {
     date: currDate,
     percentage,
     second,
@@ -47,7 +49,8 @@ export const calculateHour = () => {
     month,
     year,
   }
-  console.log('🚀 ~ calculateHour ~ emit:', emit)
+  console.log('🚀 ~ calculateHour ~ result:', result)
+  storeAndEmit('hour', result)
 }
 
 export const calculateDay = () => {
@@ -64,7 +67,7 @@ export const calculateDay = () => {
     timeUnits.SECONDS_IN_A_DAY,
   )
 
-  const emit = {
+  const result = {
     date: currDate,
     percentage,
     second,
@@ -74,7 +77,8 @@ export const calculateDay = () => {
     month,
     year,
   }
-  console.log('🚀 ~ calculateDay ~ emit:', emit)
+  console.log('🚀 ~ calculateDay ~ result:', result)
+  storeAndEmit('day', result)
 }
 
 export const calculateMonth = () => {
@@ -96,7 +100,7 @@ export const calculateMonth = () => {
     totalNumberOfSecondsInMonth,
   )
 
-  const emit = {
+  const result = {
     date: currDate,
     percentage,
     second,
@@ -106,7 +110,8 @@ export const calculateMonth = () => {
     month,
     year,
   }
-  console.log('🚀 ~ calculateMonth ~ emit:', emit)
+  console.log('🚀 ~ calculateMonth ~ result:', result)
+  storeAndEmit('month', result)
 }
 
 export const calculateYear = () => {
@@ -136,7 +141,7 @@ export const calculateYear = () => {
     totalNumberOfSecondsInYear,
   )
 
-  const emit = {
+  const result = {
     date: currDate,
     percentage,
     second,
@@ -146,5 +151,6 @@ export const calculateYear = () => {
     month,
     year,
   }
-  console.log('🚀 ~ calculateYear ~ emit:', emit)
+  console.log('🚀 ~ calculateYear ~ result:', result)
+  storeAndEmit('year', result)
 }
