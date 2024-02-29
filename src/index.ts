@@ -7,10 +7,18 @@ server.listen(port, () => {
   console.log(`App (${node_env}) listening at http://localhost:${port}`)
 })
 
-io.on('connection', (socket) => {
-  console.log(socket.id)
-  console.log('a user connected')
-  socket.on('disconnect', () => {
-    console.log('user disconnected')
-  })
+io.of('/hour').on('connection', (socket) => {
+  socket.emit('init', 'Connected to Hour Clock')
+})
+
+io.of('/day').on('connection', (socket) => {
+  socket.emit('init', 'Connected to Day Clock')
+})
+
+io.of('/month').on('connection', (socket) => {
+  socket.emit('init', 'Connected to Month Clock')
+})
+
+io.of('/year').on('connection', (socket) => {
+  socket.emit('init', 'Connected to Year Clock')
 })

@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  api:
+    networks:
+      - synchrona-network
+    build:
+      target: development
+    volumes:
+      - ./:/usr/src/app
+    environment:
+      - NODE_ENV=development
+
+networks:
+  synchrona-network:
+    name: synchrona-network
+    driver: bridge

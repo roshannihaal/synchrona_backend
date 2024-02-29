@@ -1,6 +1,6 @@
 {
   "name": "synchrona_backend",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -23,6 +23,8 @@
     "ts-node": "^10.9.2"
   },
   "dependencies": {
+    "cron": "^3.1.6",
+    "date-fns": "^3.3.1",
     "dotenv": "^16.4.1",
     "express": "^4.18.2",
     "nodemon": "^3.0.3",
