@@ -11,7 +11,7 @@ import { storeAndEmit } from './storeAndEmit'
 
 export const calculateMinute = () => {
   const currDate = getCurrDate()
-  const { second, minute, hour, day, month, year } = getFormattedDate(currDate)
+  const { second } = getFormattedDate(currDate)
 
   const percentage = calculatePercentage(second, timeUnits.SECONDS_IN_A_MINUTE)
 
@@ -19,12 +19,11 @@ export const calculateMinute = () => {
     date: currDate,
     percentage,
   }
-  console.log('🚀 ~ calculateMinute ~ emit:', emit)
 }
 
 export const calculateHour = () => {
   const currDate = getCurrDate()
-  const { second, minute, hour, day, month, year } = getFormattedDate(currDate)
+  const { second, minute } = getFormattedDate(currDate)
 
   const secondsPassed = timeUnits.SECONDS_IN_A_MINUTE * minute + second
 
@@ -37,13 +36,12 @@ export const calculateHour = () => {
     date: currDate,
     percentage,
   }
-  console.log('🚀 ~ calculateHour ~ result:', result)
   storeAndEmit('hour', result)
 }
 
 export const calculateDay = () => {
   const currDate = getCurrDate()
-  const { second, minute, hour, day, month, year } = getFormattedDate(currDate)
+  const { second, minute, hour } = getFormattedDate(currDate)
 
   const secondsPassed =
     timeUnits.SECONDS_IN_AN_HOUR * hour +
@@ -59,7 +57,6 @@ export const calculateDay = () => {
     date: currDate,
     percentage,
   }
-  console.log('🚀 ~ calculateDay ~ result:', result)
   storeAndEmit('day', result)
 }
 
@@ -86,7 +83,6 @@ export const calculateMonth = () => {
     date: currDate,
     percentage,
   }
-  console.log('🚀 ~ calculateMonth ~ result:', result)
   storeAndEmit('month', result)
 }
 
@@ -121,6 +117,5 @@ export const calculateYear = () => {
     date: currDate,
     percentage,
   }
-  console.log('🚀 ~ calculateYear ~ result:', result)
   storeAndEmit('year', result)
 }
