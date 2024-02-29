@@ -1,3 +1,4 @@
+import { io } from '../app'
 import { timeUnits } from '../constants'
 import {
   getCurrDate,
@@ -6,29 +7,23 @@ import {
   getDaysInAMonth,
   getDaysInAYear,
 } from '../utils'
+import { storeAndEmit } from './storeAndEmit'
 
 export const calculateMinute = () => {
   const currDate = getCurrDate()
-  const { second, minute, hour, day, month, year } = getFormattedDate(currDate)
+  const { second } = getFormattedDate(currDate)
 
   const percentage = calculatePercentage(second, timeUnits.SECONDS_IN_A_MINUTE)
 
   const emit = {
     date: currDate,
     percentage,
-    second,
-    minute,
-    hour,
-    day,
-    month,
-    year,
   }
-  console.log('🚀 ~ calculateMinute ~ emit:', emit)
 }
 
 export const calculateHour = () => {
   const currDate = getCurrDate()
-  const { second, minute, hour, day, month, year } = getFormattedDate(currDate)
+  const { second, minute } = getFormattedDate(currDate)
 
   const secondsPassed = timeUnits.SECONDS_IN_A_MINUTE * minute + second
 
@@ -37,22 +32,16 @@ export const calculateHour = () => {
     timeUnits.SECONDS_IN_AN_HOUR,
   )
 
-  const emit = {
+  const result = {
     date: currDate,
     percentage,
-    second,
-    minute,
-    hour,
-    day,
-    month,
-    year,
   }
-  console.log('🚀 ~ calculateHour ~ emit:', emit)
+  storeAndEmit('hour', result)
 }
 
 export const calculateDay = () => {
   const currDate = getCurrDate()
-  const { second, minute, hour, day, month, year } = getFormattedDate(currDate)
+  const { second, minute, hour } = getFormattedDate(currDate)
 
   const secondsPassed =
     timeUnits.SECONDS_IN_AN_HOUR * hour +
@@ -64,17 +53,11 @@ export const calculateDay = () => {
     timeUnits.SECONDS_IN_A_DAY,
   )
 
-  const emit = {
+  const result = {
     date: currDate,
     percentage,
-    second,
-    minute,
-    hour,
-    day,
-    month,
-    year,
   }
-  console.log('🚀 ~ calculateDay ~ emit:', emit)
+  storeAndEmit('day', result)
 }
 
 export const calculateMonth = () => {
@@ -96,17 +79,11 @@ export const calculateMonth = () => {
     totalNumberOfSecondsInMonth,
   )
 
-  const emit = {
+  const result = {
     date: currDate,
     percentage,
-    second,
-    minute,
-    hour,
-    day,
-    month,
-    year,
   }
-  console.log('🚀 ~ calculateMonth ~ emit:', emit)
+  storeAndEmit('month', result)
 }
 
 export const calculateYear = () => {
@@ -136,15 +113,9 @@ export const calculateYear = () => {
     totalNumberOfSecondsInYear,
   )
 
-  const emit = {
+  const result = {
     date: currDate,
     percentage,
-    second,
-    minute,
-    hour,
-    day,
-    month,
-    year,
   }
-  console.log('🚀 ~ calculateYear ~ emit:', emit)
+  storeAndEmit('year', result)
 }

@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
     .send({ statusCode: resStatusCode, message: 'Hello World!' })
 })
 
-cronMinute.start()
+// cronMinute.start()
 cronHour.start()
 cronDay.start()
 cronMonth.start()
