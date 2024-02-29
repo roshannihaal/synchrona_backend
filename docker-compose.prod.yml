@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  api:
+    extends:
+      file: docker-compose.yml
+      service: api
+    networks:
+      - synchrona-network
+    build:
+      target: production
+    environment:
+      - NODE_ENV=production
+
+networks:
+  synchrona-network:
+    name: synchrona-network
+    driver: bridge
