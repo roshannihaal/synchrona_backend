@@ -1,12 +1,14 @@
 {
   "name": "synchrona_backend",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prepare": "husky install",
-    "dev": "nodemon ./src/index.ts"
+    "dev": "nodemon ./src/index.ts",
+    "build": "rm -rf ./dist && tsc",
+    "start": "node ./dist/index.js"
   },
   "keywords": [],
   "author": "",

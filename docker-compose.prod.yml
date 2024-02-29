@@ -2,15 +2,15 @@ version: '3.8'
 
 services:
   api:
+    extends:
+      file: docker-compose.yml
+      service: api
     networks:
       - synchrona-network
     build:
-      target: development
-    volumes:
-      - ./:/usr/src/app
+      target: production
     environment:
-      - NODE_ENV=development
-    command: npm run dev
+      - NODE_ENV=production
 
 networks:
   synchrona-network:
