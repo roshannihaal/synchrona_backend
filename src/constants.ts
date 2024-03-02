@@ -16,6 +16,7 @@ export const route = {
 
 export const eventEmitter = {
   INIT: 'init',
+  MINUTE_SYNC: 'minuteSync',
   HOUR_SYNC: 'hourSync',
   DAY_SYNC: 'daySync',
   MONTH_SYNC: 'monthSync',

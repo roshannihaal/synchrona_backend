@@ -6,6 +6,7 @@ import {
   calculateMonth,
   calculateYear,
 } from '../cron/calculate.service'
+import { EmitterDTO } from './utils.dto'
 
 export const initializeSockets = () => {
   io.on('connection', (socket) => {
@@ -35,4 +36,13 @@ export const initializeSockets = () => {
     socket.emit(eventEmitter.INIT, 'Connected to Year Clock')
     calculateYear()
   })
+}
+
+export const emitSocketEvent = (
+  route: string,
+  eventEmitter: string,
+  value: EmitterDTO,
+) => {
+  const actualRoute = `/${route}`
+  io.of(actualRoute).emit(eventEmitter, value)
 }
