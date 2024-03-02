@@ -5,3 +5,19 @@ export const timeUnits = {
   HOURS_IN_A_DAY: 24,
   SECONDS_IN_A_DAY: 24 * 60 * 60,
 }
+
+export const route = {
+  MINUTE: 'minute',
+  HOUR: 'hour',
+  DAY: 'day',
+  MONTH: 'month',
+  YEAR: 'year',
+}
+
+export const eventEmitter = {
+  INIT: 'init',
+  HOUR_SYNC: 'hourSync',
+  DAY_SYNC: 'daySync',
+  MONTH_SYNC: 'monthSync',
+  YEAR_SYNC: 'yearSync',
+}

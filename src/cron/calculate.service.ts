@@ -1,5 +1,5 @@
 import { io } from '../app'
-import { timeUnits } from '../constants'
+import { route, timeUnits } from '../constants'
 import {
   getCurrDate,
   getFormattedDate,
@@ -7,7 +7,7 @@ import {
   getDaysInAMonth,
   getDaysInAYear,
 } from '../utils'
-import { storeAndEmit } from './storeAndEmit'
+import { emit } from './emit'
 
 export const calculateMinute = () => {
   const currDate = getCurrDate()
@@ -15,10 +15,11 @@ export const calculateMinute = () => {
 
   const percentage = calculatePercentage(second, timeUnits.SECONDS_IN_A_MINUTE)
 
-  const emit = {
+  const result = {
     date: currDate,
     percentage,
   }
+  emit(route.MINUTE, result)
 }
 
 export const calculateHour = () => {
@@ -36,7 +37,7 @@ export const calculateHour = () => {
     date: currDate,
     percentage,
   }
-  storeAndEmit('hour', result)
+  emit(route.HOUR, result)
 }
 
 export const calculateDay = () => {
@@ -57,7 +58,7 @@ export const calculateDay = () => {
     date: currDate,
     percentage,
   }
-  storeAndEmit('day', result)
+  emit(route.DAY, result)
 }
 
 export const calculateMonth = () => {
@@ -83,7 +84,7 @@ export const calculateMonth = () => {
     date: currDate,
     percentage,
   }
-  storeAndEmit('month', result)
+  emit(route.MONTH, result)
 }
 
 export const calculateYear = () => {
@@ -117,5 +118,5 @@ export const calculateYear = () => {
     date: currDate,
     percentage,
   }
-  storeAndEmit('year', result)
+  emit(route.YEAR, result)
 }
