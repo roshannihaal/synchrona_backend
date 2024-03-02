@@ -1,5 +1,5 @@
 import { io } from '../app'
-import { timeUnits } from '../constants'
+import { eventEmitter, route, timeUnits } from '../constants'
 import {
   getCurrDate,
   getFormattedDate,
@@ -7,7 +7,7 @@ import {
   getDaysInAMonth,
   getDaysInAYear,
 } from '../utils'
-import { storeAndEmit } from './storeAndEmit'
+import { emitSocketEvent } from '../utils'
 
 export const calculateMinute = () => {
   const currDate = getCurrDate()
@@ -15,10 +15,11 @@ export const calculateMinute = () => {
 
   const percentage = calculatePercentage(second, timeUnits.SECONDS_IN_A_MINUTE)
 
-  const emit = {
+  const result = {
     date: currDate,
     percentage,
   }
+  emitSocketEvent(route.MINUTE, eventEmitter.MINUTE_SYNC, result)
 }
 
 export const calculateHour = () => {
@@ -36,7 +37,7 @@ export const calculateHour = () => {
     date: currDate,
     percentage,
   }
-  storeAndEmit('hour', result)
+  emitSocketEvent(route.HOUR, eventEmitter.HOUR_SYNC, result)
 }
 
 export const calculateDay = () => {
@@ -57,7 +58,7 @@ export const calculateDay = () => {
     date: currDate,
     percentage,
   }
-  storeAndEmit('day', result)
+  emitSocketEvent(route.DAY, eventEmitter.DAY_SYNC, result)
 }
 
 export const calculateMonth = () => {
@@ -83,7 +84,7 @@ export const calculateMonth = () => {
     date: currDate,
     percentage,
   }
-  storeAndEmit('month', result)
+  emitSocketEvent(route.MONTH, eventEmitter.MONTH_SYNC, result)
 }
 
 export const calculateYear = () => {
@@ -117,5 +118,5 @@ export const calculateYear = () => {
     date: currDate,
     percentage,
   }
-  storeAndEmit('year', result)
+  emitSocketEvent(route.YEAR, eventEmitter.YEAR_SYNC, result)
 }
