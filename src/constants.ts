@@ -21,4 +21,5 @@ export const eventEmitter = {
   DAY_SYNC: 'daySync',
   MONTH_SYNC: 'monthSync',
   YEAR_SYNC: 'yearSync',
+  META_SYNC: 'metaSync',
 }

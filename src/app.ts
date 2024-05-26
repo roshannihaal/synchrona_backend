@@ -1,15 +1,14 @@
 import express from 'express'
 import http from 'http'
 import { Server } from 'socket.io'
-import { cronMinute, cronHour, cronDay, cronMonth, cronYear } from './cron'
-import { initializeSockets } from './utils'
+import { socketClientService } from './service'
 
 const app = express()
 const server = http.createServer(app)
 const io = new Server(server)
 
 try {
-  initializeSockets()
+  socketClientService.initializeSockets()
 } catch (error) {
   console.error('Server initialisation error', error)
   process.exit(1)
@@ -21,11 +20,5 @@ app.get('/', (req, res) => {
     .status(resStatusCode)
     .send({ statusCode: resStatusCode, message: 'Hello World!' })
 })
-
-cronMinute.start()
-cronHour.start()
-cronDay.start()
-cronMonth.start()
-cronYear.start()
 
 export { io, server }
