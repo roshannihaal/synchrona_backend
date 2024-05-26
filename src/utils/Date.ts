@@ -4,9 +4,9 @@ import { config } from '../config'
 const locale = config.LOCALE
 const timezone = config.TIMEZONE
 
-export const getCurrDate = () => {
+export const getCurrDate = (timeZone: string) => {
   const currDate = new Date().toLocaleString(locale, {
-    timeZone: timezone,
+    timeZone,
     hour12: false,
   })
   return currDate
