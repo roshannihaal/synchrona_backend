@@ -20,26 +20,14 @@ class Cron {
         true,
         timeZone,
       )
-      const body = {
-        viewers: this.getCronCount(),
-      }
-      socketClientService.emit(socket, null, body)
     }
   }
 
   public removeCron(socket: Socket) {
-    if (this.activeCron[socket.id]) {
+    if (socket && this.activeCron[socket.id]) {
       this.activeCron[socket.id].stop()
       delete this.activeCron[socket.id]
-      const body = {
-        viewers: this.getCronCount(),
-      }
-      socketClientService.emit(socket, null, body)
     }
-  }
-
-  private getCronCount(): number {
-    return Object.keys(this.activeCron).length
   }
 
   private getCronExpression(type: string) {

@@ -7,6 +7,8 @@ export const EmitterDTO = z.object({
 export type EmitterDTO = z.input<typeof EmitterDTO>
 
 export const MetaEmitterDTO = z.object({
-  viewers: z.number(),
+  viewers: z.number().optional(),
+  status: z.string().optional(),
+  message: z.string().optional(),
 })
 export type MetaEmitterDTO = z.input<typeof MetaEmitterDTO>
