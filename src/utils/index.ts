@@ -5,4 +5,4 @@ export {
   getDaysInAYear,
 } from './Date'
 export { calculatePercentage } from './Maths'
-export { initializeSockets, emitSocketEvent } from './SocketClient'
+export { EmitterDTO } from './utils.dto'
