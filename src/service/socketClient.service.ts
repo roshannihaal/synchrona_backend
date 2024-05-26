@@ -10,8 +10,9 @@ class SocketClient {
   initializeSockets() {
     io.on('connection', (socket) => {
       const timeZone = socket.handshake.query.timeZone as string
-      this.counter += 1
+
       if (timeZone && this.isValidTimeZone(timeZone)) {
+        this.counter += 1
         const indBody = {
           status: 'success',
           message: 'Connected to socket',
@@ -32,6 +33,7 @@ class SocketClient {
 
       socket.on('disconnect', () => {
         this.counter -= 1
+
         const body = {
           viewers: this.counter,
         }
