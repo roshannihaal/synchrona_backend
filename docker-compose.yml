@@ -15,6 +15,6 @@ services:
       - MONTH_CRON=${MONTH_CRON}
       - YEAR_CRON=${YEAR_CRON}
       - LOCALE=${LOCALE}
-      - TIMEZONE=${TIMEZONE}
+      - FRONTEND_URL=${FRONTEND_URL}      
     ports:
       - ${PORT}:${PORT}
