@@ -2,7 +2,6 @@ import { format } from 'date-fns'
 import { config } from '../config'
 
 const locale = config.LOCALE
-const timezone = config.TIMEZONE
 
 export const getCurrDate = (timeZone: string) => {
   const currDate = new Date().toLocaleString(locale, {

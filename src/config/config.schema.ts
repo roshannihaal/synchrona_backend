@@ -9,7 +9,7 @@ export const ConfigSchema = z.object({
   MONTH_CRON: z.string().trim(),
   YEAR_CRON: z.string().trim(),
   LOCALE: z.string().trim(),
-  TIMEZONE: z.string().trim(),
+  FRONTEND_URL: z.string().trim(),
 })
 
 export type ConfigSchema = z.input<typeof ConfigSchema>
