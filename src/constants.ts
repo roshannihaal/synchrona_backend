@@ -12,6 +12,7 @@ export const route = {
   DAY: 'day',
   MONTH: 'month',
   YEAR: 'year',
+  ROOT: '/',
 }
 
 export const eventEmitter = {

@@ -17,17 +17,17 @@ class SocketClient {
           status: 'success',
           message: 'Connected to socket',
         }
-        socket.emit(eventEmitter.META_SYNC, indBody)
+        this.emit(socket, route.ROOT, indBody)
         const body = {
           viewers: this.counter,
         }
-        this.emit(socket, null, body)
+        io.emit(eventEmitter.META_SYNC, body)
       } else {
         const indBody = {
           status: 'error',
           message: 'Invalid time zone',
         }
-        socket.emit(eventEmitter.META_SYNC, indBody)
+        this.emit(socket, route.ROOT, indBody)
         socket.disconnect(true)
       }
 
@@ -37,7 +37,7 @@ class SocketClient {
         const body = {
           viewers: this.counter,
         }
-        this.emit(socket, null, body)
+        io.emit(eventEmitter.META_SYNC, body)
       })
     })
 
@@ -102,7 +102,7 @@ class SocketClient {
     })
   }
 
-  emit(socket: Socket, type: string | null, data: EmitterDTO | MetaEmitterDTO) {
+  emit(socket: Socket, type: string, data: EmitterDTO | MetaEmitterDTO) {
     switch (type) {
       case route.MINUTE:
         socket.emit(eventEmitter.MINUTE_SYNC, data)
@@ -119,8 +119,8 @@ class SocketClient {
       case route.YEAR:
         socket.emit(eventEmitter.YEAR_SYNC, data)
         break
-      default:
-        io.emit(eventEmitter.META_SYNC, data)
+      case route.ROOT:
+        socket.emit(eventEmitter.META_SYNC, data)
     }
   }
 
