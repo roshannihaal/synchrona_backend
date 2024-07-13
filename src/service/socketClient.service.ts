@@ -3,7 +3,7 @@ import { eventEmitter, route } from '../constants'
 import { io } from '../app'
 import { Socket } from 'socket.io'
 import { calculateService } from './calculate.service'
-import { EmitterDTO } from '../utils'
+import { EmitterDTO, joke } from '../utils'
 import { MetaEmitterDTO } from '../utils/utils.dto'
 class SocketClient {
   private counter: number = 0
@@ -16,9 +16,10 @@ class SocketClient {
         const indBody = {
           status: 'success',
           message: 'Connected to socket',
+          joke,
         }
         this.emit(socket, route.ROOT, indBody)
-        const body = {
+        const body: MetaEmitterDTO = {
           viewers: this.counter,
         }
         io.emit(eventEmitter.META_SYNC, body)
@@ -34,7 +35,7 @@ class SocketClient {
       socket.on('disconnect', () => {
         this.counter -= 1
 
-        const body = {
+        const body: MetaEmitterDTO = {
           viewers: this.counter,
         }
         io.emit(eventEmitter.META_SYNC, body)
@@ -122,6 +123,10 @@ class SocketClient {
       case route.ROOT:
         socket.emit(eventEmitter.META_SYNC, data)
     }
+  }
+
+  emitJoke(joke: string) {
+    io.emit(eventEmitter.META_SYNC, { viewers: this.counter, joke })
   }
 
   private isValidTimeZone(timeZone: string) {

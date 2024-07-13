@@ -9,3 +9,5 @@ if (!result.success) {
 }
 
 export const config = result.data
+
+export { JokeBlackListEnum, JokeWhiteListEnum } from './config.schema'

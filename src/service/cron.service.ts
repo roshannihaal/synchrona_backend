@@ -4,6 +4,7 @@ import { config } from '../config'
 import { CronJob } from 'cron'
 import { calculateService } from './calculate.service'
 import { socketClientService } from './socketClient.service'
+import { fetchJoke } from '../utils'
 class Cron {
   private activeCron: any = {}
   public addCron(socket: Socket, type: string) {
@@ -45,6 +46,16 @@ class Cron {
       default:
         return null
     }
+  }
+
+  public async addCronJoke() {
+    if (!config.JOKE_CRON) {
+      return
+    }
+    const expression = config.JOKE_CRON
+    await fetchJoke()
+    const jokeCron = new CronJob(expression, fetchJoke)
+    jokeCron.start()
   }
 }
 
