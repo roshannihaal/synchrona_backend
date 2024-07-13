@@ -49,13 +49,13 @@ class Cron {
   }
 
   public async addCronJoke() {
+    const timeZone = 'Etc/Greenwich'
     if (!config.JOKE_CRON) {
       return
     }
     const expression = config.JOKE_CRON
     await fetchJoke()
-    const jokeCron = new CronJob(expression, fetchJoke)
-    jokeCron.start()
+    new CronJob(expression, fetchJoke, null, true, timeZone)
   }
 }
 
