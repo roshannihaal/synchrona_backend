@@ -6,7 +6,7 @@ const locale = config.LOCALE
 export const getCurrDate = (timeZone: string) => {
   const currDate = new Date().toLocaleString(locale, {
     timeZone,
-    hour12: false,
+    hourCycle: 'h23',
   })
   return currDate
 }
