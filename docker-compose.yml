@@ -15,6 +15,12 @@ services:
       - MONTH_CRON=${MONTH_CRON}
       - YEAR_CRON=${YEAR_CRON}
       - LOCALE=${LOCALE}
-      - FRONTEND_URL=${FRONTEND_URL}      
+      - FRONTEND_URL=${FRONTEND_URL}  
+      - ADD_JOKE=${ADD_JOKE} 
+      - JOKE_CRON=${JOKE_CRON} 
+      - JOKE_API=${JOKE_API}
+      - JOKE_WHITELIST=${JOKE_WHITELIST} 
+      - JOKE_BLACKLIST=${JOKE_BLACKLIST}    
+      - JOKE_SAFE=${JOKE_SAFE} 
     ports:
       - ${PORT}:${PORT}
