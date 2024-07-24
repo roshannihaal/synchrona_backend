@@ -5,6 +5,7 @@ import { Socket } from 'socket.io'
 import { calculateService } from './calculate.service'
 import { EmitterDTO, joke } from '../utils'
 import { MetaEmitterDTO } from '../utils/utils.dto'
+import { config } from '../config'
 class SocketClient {
   private counter: number = 0
   initializeSockets() {
@@ -13,10 +14,12 @@ class SocketClient {
 
       if (timeZone && this.isValidTimeZone(timeZone)) {
         this.counter += 1
-        const indBody = {
+        const indBody: MetaEmitterDTO = {
           status: 'success',
           message: 'Connected to socket',
-          joke,
+        }
+        if (config.ADD_JOKE) {
+          indBody['joke'] = joke
         }
         this.emit(socket, route.ROOT, indBody)
         const body: MetaEmitterDTO = {
