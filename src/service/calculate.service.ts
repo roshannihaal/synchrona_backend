@@ -76,7 +76,7 @@ class Calculate {
       totalNumberOfDaysInMonth * timeUnits.SECONDS_IN_A_DAY
 
     const secondsPassed =
-      timeUnits.SECONDS_IN_A_DAY * day +
+      timeUnits.SECONDS_IN_A_DAY * (day - 1) +
       timeUnits.SECONDS_IN_AN_HOUR * hour +
       timeUnits.SECONDS_IN_A_MINUTE * minute +
       second
