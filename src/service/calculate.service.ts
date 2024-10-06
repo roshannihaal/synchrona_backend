@@ -109,7 +109,7 @@ class Calculate {
       numberOfDaysPassedInYear += numberOfDaysInPrevMoth
     }
     const secondsPassedTillCurrentDate =
-      numberOfDaysPassedInYear * timeUnits.SECONDS_IN_A_DAY
+      (numberOfDaysPassedInYear - 1) * timeUnits.SECONDS_IN_A_DAY
 
     const secondsPassed =
       timeUnits.SECONDS_IN_AN_HOUR * hour +
