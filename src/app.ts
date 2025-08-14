@@ -18,7 +18,7 @@ try {
   process.exit(1)
 }
 
-app.get('/', (req: Request, res: Response) => {
+app.get('/api', (req: Request, res: Response) => {
   const resStatusCode = 200
   return res
     .status(resStatusCode)
