@@ -18,11 +18,8 @@ try {
   process.exit(1)
 }
 
-app.get('/', (req: Request, res: Response) => {
-  const resStatusCode = 200
-  return res
-    .status(resStatusCode)
-    .send({ statusCode: resStatusCode, message: 'Hello World!' })
+app.get('/api', (req: Request, res: Response) => {
+  return res.status(200).send({ statusCode: 200, message: 'Hello World!' })
 })
 
 export { io, server }
