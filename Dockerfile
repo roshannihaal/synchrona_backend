@@ -4,7 +4,7 @@ FROM base AS development
 
 WORKDIR /usr/src/app
 
-COPY package.*json .
+COPY package*.json .
 
 RUN npm install
 
@@ -16,7 +16,7 @@ FROM base AS production
 
 WORKDIR /usr/src/app
 
-COPY package.*json .
+COPY package*.json .
 
 RUN npm install --omit=dev --ignore-scripts
 
