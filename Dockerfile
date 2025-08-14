@@ -1,10 +1,10 @@
-FROM node:20.11.0-buster-slim as base
+FROM node:20.11.0-buster-slim AS base
 
-FROM base as development
+FROM base AS development
 
 WORKDIR /usr/src/app
 
-COPY package.*json .
+COPY package*.json .
 
 RUN npm install
 
@@ -12,11 +12,11 @@ COPY . .
 
 RUN npm run build
 
-FROM base as production
+FROM base AS production
 
 WORKDIR /usr/src/app
 
-COPY package.*json .
+COPY package*.json .
 
 RUN npm install --omit=dev --ignore-scripts
 
