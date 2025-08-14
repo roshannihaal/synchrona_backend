@@ -1,4 +1,4 @@
-import express from 'express'
+import express, { Request, Response } from 'express'
 import http from 'http'
 import { Server } from 'socket.io'
 import { cronService, socketClientService } from './service'
@@ -18,7 +18,7 @@ try {
   process.exit(1)
 }
 
-app.get('/', (req, res) => {
+app.get('/', (req: Request, res: Response) => {
   const resStatusCode = 200
   return res
     .status(resStatusCode)
