@@ -19,10 +19,7 @@ try {
 }
 
 app.get('/api', (req: Request, res: Response) => {
-  const resStatusCode = 200
-  return res
-    .status(resStatusCode)
-    .send({ statusCode: resStatusCode, message: 'Hello World!' })
+  return res.status(200).send({ statusCode: 200, message: 'Hello World!' })
 })
 
 export { io, server }
